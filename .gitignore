@@ -5,17 +5,17 @@
 .ipynb_checkpoints
 
 # Data and output directories
-data/
 output/
 
 # Python package info
+sandbox.egg-info
 evolvepro.egg-info
 
 # Old environment file
 environment_old.yml
 
 # Specific directory
-evolvepro/plm/proteinbert/proteinbert
+sandbox/plm/proteinbert/proteinbert
 scripts/exp/check_embeddings/
 external/
 

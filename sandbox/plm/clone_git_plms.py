@@ -18,10 +18,6 @@ def clone_repositories():
                 ["python", "setup.py", "install"]
             ]
         },
-        "efficient-evolution": {
-            "url": "https://github.com/brianhie/efficient-evolution.git",
-            "post_clone": []  # No post-clone commands needed
-        }
     }
     
     # Clone each repository and run post-clone commands

@@ -1,26 +1,25 @@
 #!/bin/bash
 # Configuration values for SLURM job submission.
 # One leading hash ahead of the word SBATCH is not a comment, but two are.
-#SBATCH --time=24:00:00 
-#SBATCH -x node[110]
+#SBATCH --time=2:00:00 
 #SBATCH --job-name=prot_t5
 #SBATCH -n 1 
 #SBATCH -N 1   
-#SBATCH --gres=gpu:a100:1
+#SBATCH --partition=nvidia-2080ti-20
+#SBATCH --gres=gpu:1                  
 #SBATCH --cpus-per-task=1  
-#SBATCH --constraint=high-capacity    
-#SBATCH --mem=80gb  
+#SBATCH --mem=10gb  
 #SBATCH --output out/prot_t5-%j.out 
 
 source ~/.bashrc
-conda activate embeddings
+conda activate plm
 
-cd /orcd/archive/abugoot/001/Projects/Matteo/Github/EvolvePro
+cd /lab/barcheese01/mdiberna/plm_sandbox/
 
-study_names=("brenan" "jones" "stiffler" "haddox" "doud" "giacomelli" "kelsic" "lee" "markin" "cas12f" "cov2_S" "zikv_E")
+study_names=("isoform_sequences")
 
-fasta_path="output/dms/"
-results_path="output/plm/prot_t5/"
+fasta_path="output/isoform/process/"
+results_path="output/isoform/prot_t5/"
 model_names=("prot_t5")
 
 mkdir -p ${results_path}

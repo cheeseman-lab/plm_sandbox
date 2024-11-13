@@ -1,21 +1,25 @@
 #!/bin/bash
 # Configuration values for SLURM job submission.
+# One leading hash ahead of the word SBATCH is not a comment, but two are.
 #SBATCH --time=2:00:00 
 #SBATCH --job-name=one-hot
 #SBATCH -n 1 
 #SBATCH -N 1   
-#SBATCH --cpus-per-task=1  
+#SBATCH --partition=20
+#SBATCH --cpus-per-task=12
 #SBATCH --mem=100gb  
 #SBATCH --output out/one-hot-%j.out 
 
 source ~/.bashrc
-conda activate evolvepro
-cd /orcd/archive/abugoot/001/Projects/Matteo/Github/EvolvePro
+conda activate plm
 
-study_names=("brenan" "jones" "stiffler" "haddox" "doud" "giacomelli" "kelsic" "lee" "markin" "cas12f" "cov2_S" "zikv_E")
+cd /lab/barcheese01/mdiberna/plm_sandbox/
+
+study_names=("isoform_sequences")
+
+fasta_path="output/isoform/process/"
+results_path="output/isoform/one-hot/"
 encoding_methods=("one_hot" "integer")
-fasta_path="output/dms/"
-results_path="output/plm/one-hot/"
 
 mkdir -p ${results_path}
 
