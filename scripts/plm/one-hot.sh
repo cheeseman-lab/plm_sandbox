@@ -10,6 +10,8 @@
 #SBATCH --mem=100gb  
 #SBATCH --output out/one-hot-%j.out 
 
+# SKIP DUE TO DIFFERENT SEQUENCE LENGTHS
+
 source ~/.bashrc
 conda activate plm
 
@@ -25,7 +27,7 @@ mkdir -p ${results_path}
 
 for method in "${encoding_methods[@]}"; do
   for study in "${study_names[@]}"; do
-    command="python3 evolvepro/plm/one-hot/extract.py ${fasta_path}${study}.fasta --method ${method} --results_path ${results_path}"
+    command="python3 sandbox/plm/one-hot/extract.py ${fasta_path}${study}.fasta --method ${method} --results_path ${results_path}"
     echo "Running command: ${command}"
     eval "${command}"
   done

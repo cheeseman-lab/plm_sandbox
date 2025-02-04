@@ -7,7 +7,7 @@
 #SBATCH --partition=nvidia-2080ti-20
 #SBATCH --gres=gpu:1                  
 #SBATCH --cpus-per-task=1  
-#SBATCH --mem=10gb  
+#SBATCH --mem=50gb  
 #SBATCH --output out/esm2_3B-%j.out 
 
 source ~/.bashrc
@@ -19,7 +19,11 @@ study_names=("isoform_sequences")
 
 fasta_path="output/isoform/process/"
 results_path="output/isoform/esm/"
-model_names=("esm2_t36_3B_UR50D")
+models=("esm2_t36_3B_UR50D")
+
+for model in "${models[@]}"; do
+  model_names+=("sandbox/plm/esm/models/${model}.pt")
+done
 
 repr_layers=36
 toks_per_batch=512

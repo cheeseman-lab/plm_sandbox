@@ -26,7 +26,7 @@ mkdir -p ${results_path}
 
 for model_name in "${model_names[@]}"; do
   for study in "${study_names[@]}"; do
-    command="python evolvepro/plm/prot_t5/extract.py --input ${fasta_path}${study}.fasta --output ${results_path}${study}_${model_name}.csv --per_protein 1"
+    command="python sandbox/plm/prot_t5/extract.py --input ${fasta_path}${study}.fasta --output ${results_path}${study}_${model_name}.csv --per_protein 1"
     echo "Running command: ${command}"
     eval "${command}"
   done

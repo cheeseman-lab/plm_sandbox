@@ -182,7 +182,8 @@ def main():
 
     if args.concatenate_dir is not None:
         fasta_file_name = args.fasta_file.stem
-        output_csv = f"{args.concatenate_dir}/{fasta_file_name}_{args.model_location}.csv"
+        model_name = pathlib.Path(args.model_location).stem
+        output_csv = f"{args.concatenate_dir}/{fasta_file_name}_{model_name}.csv"
         concatenate_files(args.output_dir, output_csv)
         # print(f"Removing {args.output_dir}")
         # shutil.rmtree(args.output_dir)

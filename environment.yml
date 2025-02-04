@@ -1,4 +1,4 @@
-name: sandbox
+name: emmentalembed
 channels:
   - conda-forge
   - bioconda
@@ -8,6 +8,7 @@ dependencies:
   - matplotlib
   - seaborn
   - biopython
+  - scikit-learn
   - pip
   - pip:
     - -e .
